@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022年度回顾</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            min-width: 925px;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .topimg {
+            float: left;
+            width: 20%;
+            max-height: 17%;
+        }
+
+        .title {
+            position: absolute;
+            top: 250px;
+            left: 18%;
+            right: 20%;
+            min-width: 1088px;
+        }
+
+        .yue {
+            font-size: 20em;
+        }
+
+        .lian {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+
+        .lian:hover {
+            font-size: 1.2em;
+            transition: 0.5s;
+        }
+
+        .ri1 {
+            position: absolute;
+            bottom: 90px;
+            right: 0px;
+            transition: 0.5s;
+            border-radius: 10px 0 0 10px;
+            background-color: white;
+            padding: 0 20px 0 20px;
+        }
+
+        .ri1:hover {
+            padding: 0 70px 0 20px;
+            transition: 0.5s;
+        }
+
+        .ri2 {
+            position: absolute;
+            bottom: 135px;
+            right: 0px;
+            transition: 0.5s;
+            border-radius: 10px 0 0 10px;
+            background-color: white;
+            padding: 0 20px 0 20px;
+        }
+
+        .ri2:hover {
+            padding: 0 70px 0 20px;
+            transition: 0.5s;
+        }
+
+        .ri3 {
+            position: absolute;
+            bottom: 180px;
+            right: 0px;
+            transition: 0.5s;
+            border-radius: 10px 0 0 10px;
+            background-color: white;
+            padding: 0 20px 0 20px;
+        }
+
+        .ri3:hover {
+            padding: 0 70px 0 20px;
+            transition: 0.5s;
+        }
+
+        .shi {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .container1 {
+            position: relative;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+
+        .cursor {
+            cursor: pointer;
+        }
+
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+
+        .next {
+            right: 0;
+            color: black;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column {
+            float: left;
+            width: 16.66%;
+        }
+
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        .container {
+            position: absolute;
+            width: 500px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container div {
+            position: absolute;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container .top {
+            width: 300px;
+            height: 100px;
+            font-size: 70px;
+            font-weight: bold;
+            color: white;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+
+            z-index: 2;
+            transition: all 0.5s;
+        }
+
+        .container:hover .top {
+            transform: translateY(-20px);
+        }
+
+        .container .bottom {
+            width: 300px;
+            height: 100px;
+            font-size: 70px;
+            font-weight: bold;
+            color: white;
+            clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 2;
+            transition: all 0.5s;
+        }
+
+        .container:hover .bottom {
+            transform: translateY(20px);
+        }
+
+        .container .center {
+            width: 250px;
+            height: 25px;
+            background-color: #888;
+            letter-spacing: 10px;
+            transform: scale(0.1);
+            opacity: 0;
+            transition: all 0.5s;
+            z-index: 1;
+        }
+
+        .container:hover .center {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        footer {
+            height: 150px;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+        }
+
+        .channel {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 20px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="#" class="logo">2022</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">1月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/1/1.html#1">1月3日</a>
+                    <a href="/hm B/1/1.html#2">1月15日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">2月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/2/2.html#1">2月4日</a>
+                    <a href="/hm B/2/2.html#2">2月6日</a>
+                    <a href="/hm B/2/2.html#3">2月24日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#3" class="dropbtn">3月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/3/3.html#1">3月10日</a>
+                    <a href="/hm B/3/3.html#2">3月21日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#4" class="dropbtn">4月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/4/4.html#1">4月21日</a>
+                    <a href="/hm B/4/4.html#2">4月24日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#5" class="dropbtn">5月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/5/5.html#1">5月4日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#6" class="dropbtn">6月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/6/6.html#2">6月中旬</a>
+                    <a href="/hm B/6/6.html#1">6月17日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#7" class="dropbtn">7月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/7/7.html#1">7月7日</a>
+                    <a href="/hm B/7/7.html#2">7月8日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#8" class="dropbtn">8月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/8/8.html#1">8月2日</a>
+                    <a href="/hm B/8/8.html#2">8月19日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#9" class="dropbtn">9月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/9/9.html#1">9月5日</a>
+                    <a href="/hm B/9/9.html#2">9月8日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#10" class="dropbtn">10月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/10/10.html#1">10月8日</a>
+                    <a href="/hm B/10/10.html#2">10月16日</a>
+                    <a href="/hm B/10/10.html#3">10月29日</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#11" class="dropbtn">11月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/11/11.html#1">11月14日</a>
+                    <a href="/hm B/11/11.html#2">11月20日</a>
+                    <a href="/hm B/11/11.html#3">11月30日</a>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <a href="#12" class="dropbtn">12月</a>
+                <div class="dropdown-content">
+                    <a href="/hm B/12/12.html#1">12月9日</a>
+                    <a href="/hm B/12/12.html#2">12月18日</a>
+                </div>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <div style="position: relative;box-shadow: 0 0 5px #888;">
+            <!--<img src="2022.png" class="wow bounceInUp" data-wow-duration="1s" data-wow-delay="0s" width="20%" style="position: absolute;top: 150px;width: 80%;z-index: 1000;">-->
+            <div class="title">
+                <img src="1.png" class="wow fadeInLeftBig" data-wow-duration="2s" data-wow-delay="0s" height="300px"
+                    style="float: left;">
+                <img src="2.png" class="wow fadeInDownBig" data-wow-duration="2s" data-wow-delay="0s" height="300px"
+                    style="float: left;">
+                <img src="3.png" class="wow fadeInUpBig" data-wow-duration="2s" data-wow-delay="0s" height="300px"
+                    style="float: left;">
+                <img src="4.png" class="wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0s" height="300px"
+                    style="float: left;">
+            </div>
+        </div>
+        <div>
+            <img src="white.jpg" width="100%" style="min-width: 1088px;">
+        </div>
+        <div style="position: relative;" id="1">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <div class="container1">
+                    <div class="mySlides">
+                        <img src="火.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <img src="火1.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <img src="火2.jpg" style="width:100%">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/1/1.html" class="lian"><span
+                        class="yue">1</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/1/1.html#2" class="shi">
+                    1月15-日汤加火山爆发
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/1/1.html#1" class="shi">
+                    1月3日-象限仪座流星雨
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="2">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="俄.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/2/2.html" class="lian"><span
+                        class="yue">2</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/2/2.html#3" class="shi">
+                    2月24日-俄乌冲突开始
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/2/2.html#2" class="shi">
+                    2月6日-中国女足亚洲杯夺冠
+                </a>
+            </div>
+            <div class="ri3">
+                <a href="/hm B/2/2.html#1" class="shi">
+                    2月4日-北京冬奥会开幕
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="3">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="东.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/3/3.html" class="lian"><span
+                        class="yue">3</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/3/3.html#2" class="shi">
+                    3月21日-东航空难
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/3/3.html#2" class="shi">
+                    3月10日-尹锡悦当选韩国新总统
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="4">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="马.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/4/4.html" class="lian"><span
+                        class="yue">4</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/4/4.html#2" class="shi">
+                    4月24日-马克龙连任
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/4/4.html#1" class="shi">
+                    4月21日-博鳌亚洲论坛2022年年会召开
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="5">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="藏.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/5/5.html" class="lian"><span
+                        class="yue">5</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/5/5.html#2" class="shi">
+                    5月4日-罗诉韦德案
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/5/5.html#1" class="shi">
+                    5月4日-“巅峰使命2022”珠峰科考成功登顶
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="6">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="福.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/6/6.html" class="lian"><span
+                        class="yue">6</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/6/6.html#1" class="shi">
+                    6月17日-福建舰下水 
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/6/6.html#2" class="shi">
+                    6月中旬-2022巴基斯坦洪灾
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="7">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="安.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/7/7.html" class="lian"><span
+                        class="yue">7</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/7/7.html#2" class="shi">
+                    7月8日-安倍晋三遇刺
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/7/7.html#1" class="shi">
+                    7月7日-英国首相约逊翰辞职
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="8">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="台.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/8/8.html" class="lian"><span
+                        class="yue">8</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/8/8.html#2" class="shi">
+                    8月19日-重庆火灾 
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/8/8.html#1" class="shi">
+                    8月2日-佩洛西窜访台湾
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="9">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="女王.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/9/9.html" class="lian"><span
+                        class="yue">9</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/9/9.html#2" class="shi">
+                    9月8日-英国女王伊丽莎白二世逝世
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/9/9.html#1" class="shi">
+                    9月5日-泸定地震 
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="10">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="梨.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/10/10.html" class="lian"><span
+                        class="yue">10</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/10/10.html#3" class="shi">
+                   10月29日-韩国首尔梨泰院踩踏事故
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/10/10.html#2" class="shi">
+                    10月16日-党的二十大召开
+                </a>
+            </div>
+            <div class="ri3">
+                <a href="/hm B/10/10.html#1" class="shi">
+                    10月8日-克里米亚大桥火灾
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="11">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0.2s">
+                <img src="江.png" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/11/11.html" class="lian"><span
+                        class="yue">11</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/11/11.html#3" class="shi">
+                    11月30日-江泽民同志逝世
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/11/11.html#2" class="shi">
+                    11月20日-美国中期选举
+                </a>
+            </div>
+            <div class="ri3">
+                <a href="/hm B/11/11.html#1" class="shi">
+                    11月14日-中美元首会晤
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="position: relative;" id="12">
+            <div class="wow fadeInRightBig" data-wow-duration="1.7s" data-wow-delay="0s">
+                <img src="杯.jpg" style="width:100%">
+            </div>
+            <div class="wow bounceInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s"
+                style="position: absolute;bottom: 0px;left: 100px;"><a href="/hm B/12/12.html" class="lian"><span
+                        class="yue">12</span><span style="font-size: 5em;">月</span></a></div>
+            <div class="ri1">
+                <a href="/hm B/12/12.html#2" class="shi">
+                    12月18日-卡塔尔世界杯闭幕
+                </a>
+            </div>
+            <div class="ri2">
+                <a href="/hm B/12/12.html#1" class="shi">
+                    12月9日-首架C919交付
+                </a>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+    </main>
+
+    <footer>
+        <div class="channel">
+            软工2211 0223638 晏鹏程
+        </div>
+        <div class="container">
+            <div class="top">网页报告</div>
+            <div class="center"><a href="/hm B/baogao.html" style="text-decoration: none;color:black">求求老师给个高分吧</a></div>
+            <div class="bottom">网页报告</div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+</body>
+
+</html>
