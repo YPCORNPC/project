@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·12</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("919.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("乙.jpg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("杯 18.jpg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            border: 1px solid #e5e5e5;
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·12</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">12月9日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">12月18日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>12月9日-C919全球首架机正式交付</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;C919飞机，全称COMAC919，是中国按照国际民航规章自行研制、具有自主知识产权的大型喷气式民用飞机，座级158-168座，航程4075-5555公里。已经完成立项论证、可行性论证、预发展阶段工作，转入工程发展阶段。2015年11月2日完成总装下线。性能与国际新一代的主流单通道客机相当。于2017年5月5日成功首飞。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年5月14日，中国商飞公司即将交付首家用户的首架C919大飞机首次飞行试验圆满完成。7月25日，六架国产大型客机C919试飞机圆满完成全部试飞任务。8月1日，中国商飞宣布，国产大飞机C919完成取证试飞。9月7日，国产大飞机C919首次试飞合肥新桥机场。9月13日，C919国产大飞机首次飞抵北京首都国际机场9月29日，C919飞机获颁型号合格证。10月，市场监管总局正式批准依托中国商用飞机有限责任公司成立国家商用飞机产业计量测试中心。12月9日，编号为B-919A的C919全球首架机正式交付中国东方航空。12月14日，紫光国微表示，为国产C919飞机提供网络通信类的机载总线交换芯片。12月26日，全球首架C919国产大飞机开启100小时验证飞行之旅。2023年1月1日，中国东方航空全球首架C919大型客机测试飞行。
+                        </p>
+                    </div>
+                    <h2>基本信息</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名</td>
+                            <td class="tr1">COMAC919</td>
+                            <td class="tr1">座级</td>
+                            <td class="tr1">158-168座</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">动力来源</td>
+                            <td class="tr1">航空汽油</td>
+                            <td class="tr1">所属国</td>
+                            <td class="tr1">中国</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">生产商</td>
+                            <td class="tr1">中国商用飞机有限责任公司等</td>
+                            <td class="tr1">最大载客人数</td>
+                            <td class="tr1">192人</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">功能定位</td>
+                            <td class="tr1">单通道大型干线客机</td>
+                            <td class="tr1">立项时间</td>
+                            <td class="tr1">2007年</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">发动机</td>
+                            <td class="tr1">LEAP-X1C发动机</td>
+                            <td class="tr1">获颁型号合格证</td>
+                            <td class="tr1">2022年9月29日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">最大航程</td>
+                            <td class="tr1">5555公里</td>
+                            <td class="tr1">首架交付时间</td>
+                            <td class="tr1">2022年12月9日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">首飞时间</td>
+                            <td class="tr1">2017年5月5日</td>
+                            <td class="tr1">首架交付编号</td>
+                            <td class="tr1">B-919A</td>
+                        </tr>
+                    </table>
+                    <h2>研发进展</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2008年5月11日，中国商飞公司在黄浦江畔成立。7月3日，中国商飞公司在上海召开大型客机项目论证动员大会。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2015年2月11日，C919客机首架机后机身后段完成制造并通过适航审查，正式交付中国商飞公司。7月22日，CFM国际公司首台CFMLEAP-1C发动机交付中国商飞公司总装制造中心浦东基地。11月2日，C919客机首架机在浦东基地正式总装下线。这标志着C919首架机的机体大部段对接和机载系统安装工作正式完成，同时，标志着C919客机项目工程发展阶段研制取得了阶段性成果，为下一步首飞奠定了坚实基础。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2017年4月18日，C919客机通过首飞放飞评审。4月23日，C919客机完成高速滑行抬前轮试验。5月5日C919在上海浦东机场圆满首飞。11月10日，C919飞机101架机成功从上海转场西安阎良，正式开展后续试飞取证试验工作。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2018年2月26日，中国商飞与华融金融租赁签署30架C919大型客机和20架ARJ21新支线飞机购机协议。3月24日，C919飞机102架机顺利完成第5次试飞。6月6日，C919完成全机静力试验首个极限载荷工况。6月22日，两架C919两地同步试飞。7月12日，C919大型客机102架机转场东营试飞基地。同日，C919大型客机完成2.5g极限载荷静力试验。此次转场东营试飞基地的102架机主要承担动力装置、燃油及惰化系统、电源系统、环控系统等地面试验验证和试飞科目。随着第二架试飞飞机转场东营试飞基地，中国商飞公司正式开启C919大型客机“1+M+N”多机场、多区域协同试飞模式。这意味着C919大型客机项目正式开启多地同步试飞模式，未来将接受各种复杂气象条件考验和系列高风险试飞科目挑战。10月6日，中国第三架C919客机B-001D号机完成喷漆正式对外亮相。10月27日，C919大型客机第二架机从山东东营胜利机场起飞，历经2小时6分，平稳降落在南昌瑶湖机场，圆满完成转场飞行任务。12月28日，试飞员徐远征、张健伟驾驶着C919飞机103架机，搭载着观察员蔡俊，试飞工程师赖培军、王涛在浦东国际机场的第四跑道上，滑跑、抬头、冲上云霄。在1小时38分钟的飞行中，C919飞机103架机完成了21个试验点。12时45分，C919客机103架机平安降落上海浦东国际机场，圆满完成第一次飞行，标志着共三架C919飞机进入试飞状态。此次飞行后，C919飞机103架机将适时转场西安阎良，开展颤振、空速校准、载荷、操稳和性能等科目的试飞。C919飞机两架试飞机在西安阎良、山东东营和南昌瑶湖开展多地同步试验试飞。另外三架试飞机正按计划进行部装、总装，六架试飞飞机计划2019年全部投入试飞取证工作。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2019年7月26日，C919大型客机103架机顺利转场西安阎良，开启新阶段试验试飞任务。7月30日，C919大型客机104架机在上海浦东机场第五跑道完成中、高速滑行试验，滑行总时长1小时39分钟，为首次飞行做好准备。8月1日，C919大型客机104架机完成首次试验飞行。8月30日，C919大型客机104架机顺利转场山东东营，开启新阶段试验试飞任务。9月26日，C919首批交付客户飞机零组件开工投产。10月24日，C919大型客机105架机完成首次试验飞行。12月5日，C919客机105架机于11时05分从上海浦东机场起飞，12时41分降落南昌瑶湖机场，顺利完成该机首次空中远距离转场飞行。2019年12月27日，C919客机106架机于10时15分从浦东机场第四跑道起飞，经过2小时5分钟的飞行，在完成了30个试验点后，于12时20分返航并平稳降落浦东机场，顺利完成其首次飞行任务。至此，C919客机6架试飞飞机已全部投入试飞工作，项目正式进入“6机4地”大强度试飞阶段。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2021年1月，在经历了20天的测试后，C919大型客机高寒试验试飞专项任务取得圆满成功。以验证在极寒条件下飞机各系统和设备的功能和性能是否符合适航条件。该客机于2020年12月25日飞抵内蒙古呼伦贝尔市海拉尔东山机场开展高寒试验试飞专项任务，试验试飞期间，当地最低气温已近-40℃。3月1日，中国东方航空与中国商飞正式签署首批5架C919购机合同。5月10日至12日举办的中国品牌日活动上，C919大型客机亮相。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年8月1日，中国商飞官微宣布，国产大飞机C919完成取证试飞
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年9月19日，中国民用航空局将在京为C919颁发为适航证，并计划2022年内向首个客户东航交付首架飞机。9月，完成全部适航审定工作，9月29日，获中国民用航空局颁发的型号合格证。10月，据交通发布，东航消息，在10月24日上午召开的中国东航党组扩大会上，东航总经理、党组副书记李养民表示，首架C919飞机将于2022年12月交付东航。11月，第十四届中国航展开幕，国产大飞机C919获签300架订单。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年9月30日消息，国产C919大型客机于2022年9月完成全部适航审定工作后获中国民用航空局颁发的型号合格证，将于2022年底交付首架飞机。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年9月30日消息，国产C919大型客机于2022年9月完成全部适航审定工作后获中国民用航空局颁发的型号合格证，将于2022年底交付首架飞机。
+                        </p>
+                    </div>
+                    <h2>首架交付</h2>
+                    <div>
+                        <p>
+                            &emsp;&emsp;2022年12月9日，中国东方航空作为国产大飞机C919的全球首家用户，正式接收编号为B-919A的全球首架飞机，迈出市场运营的关键“第一步”，并有望最早于2023年春投入商业载客运营。C919首架机交付是继C919获颁中国民航局型号合格证后，我国大飞机事业征程上的又一重要里程碑，意味着历经几代人的努力，我国民航运输市场将首次拥有中国自主研发的喷气式干线飞机。
+                        </p>
+                        <p>
+                            &emsp;&emsp;此次交付中国东方航空的C919大型客机有着特殊的涂装和“身份证号”。除了东航的标准化涂装之外，这架飞机在机身前部印有“全球首架”的“中国印”标识和相对应的英文。飞机注册号选用B-919A，B代表飞机的中国国籍，919和型号名称契合，A则有首架之意，突显这一全球新机型、全球首架的非凡意义。
+                        </p>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="s1.png">
+                                </td>
+                                <td>
+                                    <img src="s2.png">
+                                </td>
+                                <td>
+                                    <img src="s3.png">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="c1.jpeg" width="268px">
+                    <img src="c2.jpeg" width="268px">
+                    <img src="c3.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1 >12月28日-卡塔尔世界杯闭幕</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年卡塔尔世界杯（英语：FIFA World Cup Qatar
+                            2022）是第22届国际足联世界杯，该届赛事于2022年11月20日至12月18日在卡塔尔境内8座球场举行，是历史上首次在卡塔尔和中东国家境内举行、也是第二次在亚洲举行的世界杯足球赛，卡塔尔世界杯还是首次在北半球冬季举行、首次由从未进过世界杯决赛圈的国家举办的世界杯足球赛。该届赛事有32支球队参加。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年11月21日，该届世界杯开幕式暨揭幕战在海湾球场举行，东道主卡塔尔队0-2不敌厄瓜多尔队；12月18日，该届世界杯闭幕式和决赛在卢塞尔体育场进行，决赛中阿根廷队通过点球大战取胜法国队，赢得大力神杯，法国队和克罗地亚队分获亚军和季军。阿根廷队的利昂内尔·梅西获得该届世界杯金球奖；法国队的基利安·姆巴佩获得该届世界杯金靴奖；阿根廷队的埃米利亚诺·马丁内斯获得该届世界杯金手套奖；阿根廷队的恩佐·费尔南德斯该届世界杯最佳年轻球员奖。哈里·凯恩、布鲁诺·费尔南德斯、安托万·格列兹曼、伊万·佩里西奇、利昂内尔·梅西并列获得助攻王。12月28日，国际足联官方宣布，意大利裁判奥尔萨托当选卡塔尔世界杯最佳裁判，排名第二名的是阿根廷vs法国的决赛主裁判马齐尼亚克。
+                        </p>
+                    </div>
+                    <h2>基本信息</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名</td>
+                            <td class="tr1">2022年卡塔尔世界杯</td>
+                            <td class="tr1">上一届比赛</td>
+                            <td class="tr1">2018年俄罗斯世界杯</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">外文名</td>
+                            <td class="tr1">FIFA World Cup Qatar 2022(英语)</td>
+                            <td class="tr1">下一届比赛</td>
+                            <td class="tr1">2026年美加墨世界杯</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">举办时间</td>
+                            <td class="tr1">2022年11月21日 至 12月18日</td>
+                            <td class="tr1">决赛场地</td>
+                            <td class="tr1">卢塞尔球场</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">举办地点</td>
+                            <td class="tr1">卡塔尔</td>
+                            <td class="tr1">赛事冠军</td>
+                            <td class="tr1">阿根廷国家男子足球队</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">赛事类型</td>
+                            <td class="tr1">国际足联世界杯</td>
+                            <td class="tr1">赛事亚军</td>
+                            <td class="tr1">法国国家男子足球队</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">主办机构</td>
+                            <td class="tr1">国际足球联合会(FIFA)</td>
+                            <td class="tr1">赛事季军</td>
+                            <td class="tr1">克罗地亚国家男子足球队</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">参赛队数</td>
+                            <td class="tr1">32支</td>
+                            <td class="tr1">金球奖</td>
+                            <td class="tr1">利昂内尔·梅西</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">比赛场数</td>
+                            <td class="tr1">64场</td>
+                            <td class="tr1">金靴奖</td>
+                            <td class="tr1">基利安·姆巴佩</td>
+                        </tr>
+                    </table>
+                    <h2>冠军之路</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年卡塔尔世界杯小组赛C组第一轮，沙特阿拉伯队2-1逆转阿根廷队。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年卡塔尔世界杯小组赛C组第二轮，阿根廷2-0击败墨西哥。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年卡塔尔世界杯小组赛C组第三轮，阿根廷2-0战胜波兰，以小组第一出线。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年12月4日，2022年卡塔尔世界杯1/8决赛，阿根廷2-1战胜澳大利亚晋级八强。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年12月10日，2022年卡塔尔世界杯1/4决赛,阿根廷2[4]-2[3]战胜荷兰晋级四强。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年12月14日，2022年卡塔尔世界杯半决赛，上半场阿尔瓦雷斯造点，梅西主罚命中，随后阿尔瓦雷斯反击再入一球。下半场梅西奔袭半场助攻阿尔瓦雷斯完成梅开二度。最终，阿根廷3-0战胜克罗地亚，进入决赛
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年12月18日，2022年卡塔尔世界杯决赛，阿根廷队常规时间2-2战平法国队，加时赛两队各入一球，点球大战阿根廷4-2获胜；最终阿根廷捧起大力神杯，法国队和克罗地亚队分获亚军和季军。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="k1.png" width="268px">
+                    <img src="k2.png" width="268px" style="margin-top: 80px;">
+                    <img src="k3.png" width="268px">
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>

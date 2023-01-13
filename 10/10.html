@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·10</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("克.png");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("党.jpg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("梨 18.jpg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            border: 1px solid #e5e5e5;
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·10</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">10月8日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">10月16日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#3" class="dropbtn">10月29日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>10月8日-克里米亚大桥火灾</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日清晨，在横跨刻赤海峡的克里米亚大桥铁路上，一节装有燃料的火车油罐车厢起火，多节货运车厢受损，部分道路被毁。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日，俄罗斯总统普京就克里米亚大桥紧急事件下令成立政府委员会。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日，俄罗斯侦查委员会称，初步统计显示，克里米亚大桥事故已造成3人死亡。当地时间2022年10月8日，克里米亚地区领导人表示，克里米亚大桥公路交通已经恢复通行。当地时间2022年10月11日，俄罗斯紧急情况部发布消息称，克里米亚大桥爆炸事件中的死亡人数已经上升至4人。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年11月3日，俄罗斯副总理胡斯努林表示，克里米亚公路桥将于2023年7月1日全部修复。
+                        </p>
+                    </div>
+                    <h2>克里米亚大桥</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名 </td>
+                            <td class="tr1">克里米亚大桥</td>
+                            <td class="tr1">所属地区 </td>
+                            <td class="tr1">克里米亚半岛东部的刻赤海峡</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">外文名 </td>
+                            <td class="tr1">Kerch Strait Bridge</td>
+                            <td class="tr1">类型 </td>
+                            <td class="tr1">公路铁路两用桥</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">始建时间 </td>
+                            <td class="tr1">2014年</td>
+                            <td class="tr1">长度 </td>
+                            <td class="tr1">19 km(跨海部分7.5km)</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">投用时间 </td>
+                            <td class="tr1">2018年5月15日(3.5年工期)</td>
+                            <td class="tr1">别名 </td>
+                            <td class="tr1">刻赤海峡大桥</td>
+                        </tr>
+                    </table>
+                    <h2>事件经过</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日清晨，在横跨刻赤海峡的克里米亚大桥铁路上，一节装有燃料的火车油罐车厢起火，多节货运车厢受损，部分道路被毁。大桥上的铁路和公路交通暂时中断，刻赤海峡航运正常。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月8日，据俄新社稍早前报道，俄罗斯国家反恐委员会发布消息称，克里米亚大桥当地时间8日早上发生的事故系一辆卡车发生爆炸，引起向克里米亚半岛方向行驶的7个油罐车起火。 
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日，塔斯社援引俄罗斯紧急情况部的消息报道称，克里米亚大桥铁路桥上载有柴油的着火油罐车厢已被灭火
+                        </p>
+                    </div>
+                    <h2>事件影响</h2>
+                    <div class="first">
+                        <h3>伤亡情况</h3>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月8日，俄罗斯联邦侦查委员会表示，据初步统计，有三人在克里米亚大桥当天发生的事故中丧生。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月11日，俄罗斯紧急情况部发布消息称，克里米亚大桥爆炸事件中的死亡人数已经上升至4人。
+                        </p>
+                        <h3>财产损失</h3>
+                        <p>
+                            &emsp;&emsp;俄新社发布的刻赤海峡大桥受损视频。俄新社报道称，据全俄保险联盟的评估，克里米亚大桥事件导致的损失为2亿到5亿卢布。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月，全俄保险公司联盟（VSS）估计，克里米亚大桥爆炸起火或造成2亿（约合人民币2318万元）至5亿卢布（约合人民币5796万元）损失。 
+                        </p>
+                    </div>
+                    <h2>事件调查</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月9日，俄罗斯侦查委员会主席巴斯特雷金向俄罗斯总统普京报告了克里米亚大桥爆炸案的调查情况。巴斯特雷金指出大桥爆炸是一起“恐怖袭击”，是乌克兰特工机构策划的，而且得到了外国和俄罗斯公民的协助。侦委会已经确定了发生爆炸的货车路线，货车行经了保加利亚、格鲁吉亚、亚美尼亚等地，承运人也已经被确认。侦委会已经成功地在那些可能准备恐怖袭击的人中确定了嫌疑人。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月12日，据俄罗斯塔斯社最新报道，俄联邦安全局发布消息称，乌国防情报局局长基里洛·布达诺夫是克里米亚大桥上卡车爆炸事件的组织者。综合塔斯社、俄新社报道，俄联邦安全局还称，目前已确定12名人员参与策划克里米亚大桥上所发生的“恐袭”事件，其中8人被捕，这些被捕人员中有5名俄罗斯、3名乌克兰和亚美尼亚这3个国家的公民。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月18日，俄罗斯卫星通讯社消息，俄罗斯总统新闻秘书佩斯科夫表示，用于实施克里米亚大桥恐怖袭击的爆炸可能从乌克兰敖德萨地区通过海上运送，情报部门正在确定具体细节。
+                        </p>
+                    </div>
+                    <h2>评论</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;俄罗斯政治学家谢尔盖·马尔科夫也表达了对这一事件的看法。在他看来，这是一次“真正的恐怖袭击”，而且“幕后凶手的身份众所周知”。他在社交媒体上写道：“克里米亚大桥上的恐怖袭击。毫无疑问，乌克兰政权正在对俄罗斯发动一场恐怖主义战争。” [
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月8日，据俄罗斯《消息报》网站报道称，俄国家杜马（议会下院）议员奥列格·莫洛佐夫表示，已宣称多时的对克里米亚大桥的恐袭不再是挑衅，而是“不讲规则的宣战”，“针对我们的不加掩饰的恐怖战争正在进行”。他说，若不采取“应有的还击”，类似事件将更常发生。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1.png" width="268px">
+                    <img src="2.jpeg" width="268px">
+                    <img src="3.gif" width="268px">
+                </div>
+                <div style="position: absolute;width: 270px;right: 30px;bottom: 35px;">
+                    <img src="5.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>10月16日-党的二十大召开</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;中国共产党第二十次全国代表大会是在全党全国各族人民迈上全面建设社会主义现代化国家新征程、向第二个百年奋斗目标进军的关键时刻召开的一次十分重要的大会。大会主题是：高举中国特色社会主义伟大旗帜，全面贯彻新时代中国特色社会主义思想，弘扬伟大建党精神，自信自强、守正创新，踔厉奋发、勇毅前行，为全面建设社会主义现代化国家、全面推进中华民族伟大复兴而团结奋斗。 
+                        </p>
+                        <p>
+                            &emsp;&emsp;全国各选举单位选举产生并经中央批准公布代表共2296名。经二十大代表资格审查委员会审查，确认2296名代表资格有效。大会明确宣示党在新征程上举什么旗、走什么路、以什么样的精神状态、朝着什么样的目标继续前进，对全面建成社会主义现代化强国两步走战略安排进行宏观展望，科学谋划未来5年乃至更长时期党和国家事业发展的目标任务和大政方针。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月16日上午10时，中国共产党第二十次全国代表大会在北京人民大会堂开幕，习近平代表第十九届中央委员会向大会作了题为《高举中国特色社会主义伟大旗帜　为全面建设社会主义现代化国家而团结奋斗》的报告。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月22日，中国共产党第二十次全国代表大会通过了关于十九届中央委员会报告的决议、关于十九届中央纪律检查委员会工作报告的决议，关于《中国共产党章程（修正案）》的决议，中国共产党第二十次全国代表大会胜利闭幕 。 
+                        </p>
+                    </div>
+                    <h2>基本信息</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名</td>
+                            <td class="tr1">中国共产党第二十次全国代表大会</td>
+                            <td class="tr1">代表名额</td>
+                            <td class="tr1">2296名</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">召开时间</td>
+                            <td class="tr1">2022年10月16日至10月22日</td>
+                            <td class="tr1">召开地点</td>
+                            <td class="tr1">北京</td>
+                        </tr>
+                    </table>
+                    <h2>大会主题</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;大会的主题是：高举中国特色社会主义伟大旗帜，全面贯彻新时代中国特色社会主义思想，弘扬伟大建党精神，自信自强、守正创新，踔厉奋发、勇毅前行，为全面建设社会主义现代化国家、全面推进中华民族伟大复兴而团结奋斗。
+                        </p>
+                    </div>
+                    <h2>大会议程</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;听取和审查十九届中央委员会的报告；
+                        </p>
+                        <p>
+                            &emsp;&emsp;审查十九届中央纪律检查委员会的工作报告；
+                        </p>
+                        <p>
+                            &emsp;&emsp;审议通过《中国共产党章程（修正案）》；
+                        </p>
+                        <p>
+                            &emsp;&emsp;选举二十届中央委员会；
+                        </p>
+                        <p>
+                            &emsp;&emsp;选举二十届中央纪律检查委员会；
+                        </p>
+                    </div>
+                    <h2>大会意义</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;中国共产党第十九届中央委员会第六次全体会议认为，党的二十大是我们党进入全面建设社会主义现代化国家、向第二个百年奋斗目标进军新征程的重要时刻召开的一次十分重要的代表大会，是党和国家政治生活中的一件大事。
+                        </p>
+                        <p>
+                            &emsp;&emsp;中国共产党第二十次全国代表大会是在全党全国各族人民迈上全面建设社会主义现代化国家新征程、向第二个百年奋斗目标进军的关键时刻召开的一次十分重要的大会。大会高举中国特色社会主义伟大旗帜，坚持马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观，全面贯彻习近平新时代中国特色社会主义思想，认真总结过去5年工作，全面总结新时代以来以习近平同志为核心的党中央团结带领全党全国各族人民坚持和发展中国特色社会主义取得的重大成就和宝贵经验，深入分析国际国内形势，全面把握新时代新征程党和国家事业发展新要求、人民群众新期待，制定行动纲领和大政方针，动员全党全国各族人民坚定历史自信、增强历史主动，守正创新、勇毅前行，继续统筹推进“五位一体”总体布局、协调推进“四个全面”战略布局，继续扎实推进全体人民共同富裕，继续有力推进党的建设新的伟大工程，继续积极推动构建人类命运共同体，为全面建设社会主义现代化国家、全面推进中华民族伟大复兴而团结奋斗。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="党.jpg" width="268px">
+                    <img src="7.webp" width="268px">
+                    <img src="8.jpg" width="268px">
+                    <img src="9.webp" width="268px">
+                    <img src="10.jpeg" width="268px">
+                </div>
+                <div style="position: absolute;width: 270px;right: 30px;bottom: 35px;">
+                    <img src="6.png" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="3" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>10月29日-韩国首尔梨泰院踩踏事故</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月29日晚，韩国首尔龙山区梨泰院发生大规模踩踏事故。当晚，梨泰院举行万圣节派对，附近聚集人数据推测约10万人，伤者大多数是前来参加派对的年轻人。10月，《华盛顿邮报》称，这起事故是21世纪发生的第九大踩踏事故。 
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月30日9时45分，韩国总统尹锡悦就首尔踩踏事故发表电视讲话，宣布全国哀悼；将首尔龙山区划为特别灾难地区。
+
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年10月30日，国家主席习近平就韩国首尔发生踩踏事故，造成重大人员伤亡向韩国总统尹锡悦致慰问电。同日，国务院总理李克强向韩国总理韩德洙致慰问电。
+                        </p>
+                        <p>
+                            &emsp;&emsp;踩踏原因是治安人员不足以及制度缺失所致。
+                        </p>
+                        <p>
+                            &emsp;&emsp;截至当地时间2022年11月13日，梨泰院踩踏事故中的死亡人数升至158人，另有十人还在医院接受治疗。截至2022年11月8日，在梨泰院踩踏事故中遇难的26名外国人中，22人的遗体已被运往其本国或被安葬，韩国政府已向26名外籍遇难者中18人的遗属提供了丧葬费和慰问金。当地时间2022年11月23日，韩国国会宣布将启动“梨泰院踩踏事件”国政调查。
+                        </p>
+                    </div>
+                    <h2>基本信息</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名</td>
+                            <td class="tr1">10·29韩国首尔梨泰院踩踏事故</td>
+                            <td class="tr1">发生时间</td>
+                            <td class="tr1">2022年10月29日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">发生地点</td>
+                            <td class="tr1">韩国首尔龙山区梨泰院</td>
+                            <td class="tr1">伤亡情况</td>
+                            <td class="tr1">158人死亡、151人受伤</td>
+                        </tr>
+                    </table>
+                    <h2>事故背景</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月29日晚，韩国首尔龙山区梨泰院发生踩踏事故。据韩媒报道，当晚，梨泰院举行万圣节派对，附近聚集人数据推测约10万人，伤者大多数是前来参加派对的年轻人。
+                        </p>
+                        <p>
+                            &emsp;&emsp;韩国警方透露，发生踩踏事故的小巷是一个宽约3.2米，长约45米左右的斜坡，事故发生时，整条小巷都挤满了人。发生踩踏事故的地点是其中大约长5.7米的一段，警方称当时这一段约18平方米的空间里约有300多人，本次事故死伤者基本处在这一空间中。
+                        </p>
+                    </div>
+                    <h2>事故原因</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年11月1日，韩国总理韩德洙就梨泰院踩踏事故举行新闻发布会。他表示，踩踏原因是治安人员不足以及制度缺失所致。韩德洙强调事故原因警方仍在调查，待结果出炉后将对外公布并进行追责。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="梨 18.jpg" width="268px">
+                    <img src="11.jpeg" width="268px">
+                    <img src="12.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>
