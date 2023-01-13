@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·7</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("安 18.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("首.jpg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("4.jpeg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            border: 1px solid #e5e5e5;
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·7</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">7月7日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">7月8日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>7月7日-英国首相鲍里斯·约翰逊辞职</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;鲍里斯·约翰逊（Boris Johnson），1964年6月19日出生于美国纽约，英国国会保守党籍议员，曾任保守党领袖。英国第55任首相
+                        </p>
+                        <p>
+                            &emsp;&emsp;约翰逊1987年毕业于牛津大学。2001年6月，当选议员。2008年5月，当选英国伦敦市长。2019年7月至2022年9月任保守党领袖与英国首相
+                        </p>
+                        <p>
+                            &emsp;&emsp;鲍里斯·约翰逊执政期间完成英国脱欧，结束英国47年的欧盟成员国身份 [41]  。约翰逊主张自由市场经济，严格控制货币供应量，减少公共开支，压低通货膨胀；限制工会权利，加强法律和秩序等；强调维护英国主权，反对“联邦欧洲”、欧盟制宪，不加欧元区。在气候变化、种族关系等个别问题上，约翰逊则采取更自由的立场。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月7日，据英国《卫报》消息，英国现任首相鲍里斯·约翰逊已经同意辞职，但希望能够留任至今年秋天，待英国保守党选出接替者。
+                        </p>
+                    </div>
+                    <h2>鲍里斯·约翰逊</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名 </td>
+                            <td class="tr1">鲍里斯·约翰逊</td>
+                            <td class="tr1">职    业 </td>
+                            <td class="tr1">政治家</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">外文名 </td>
+                            <td class="tr1">Boris Johnson</td>
+                            <td class="tr1">主要成就 </td>
+                            <td class="tr1">第55任英国首相 </td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">国    籍</td>
+                            <td class="tr1">英国</td>
+                            <td class="tr1"></td>
+                            <td class="tr1">完成英国脱欧</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">出生日期 </td>
+                            <td class="tr1">1964年6月19日</td>
+                            <td class="tr1">出生地</td>
+                            <td class="tr1">美国纽约</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">毕业院校</td>
+                            <td class="tr1">牛津大学</td>
+                            <td class="tr1">政党</td>
+                            <td class="tr1">保守党</td>
+                        </tr>
+                    </table>
+                    <h2>聚会门事件</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2020年5月20日，约翰逊的私人秘书马丁·雷诺兹向唐宁街10号100多名员工发送了一份电子邮件邀请函。他在邮件中称：“在经历了一段繁忙时期后，希望大家今晚能在唐宁街10号花园里享受好天气，喝一杯不讲究社交距离的酒，这会是一件非常美好的事。请在下午6点参加，并自带酒水。”
+                        </p>
+                        <p>
+                            &emsp;&emsp;2020年6月19日下午，当时还是约翰逊未婚妻的卡丽在首相府内阁会议室组织一场惊喜派对，为约翰逊庆生，多达30人参加，且派对前一晚，约翰逊在住所招待亲朋。然而，当时防疫规定禁止室内聚会，户外聚会人数不得超过6人。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2020年11月的一场聚会，发生在英国政府下令英格兰地区进入第二次新冠防疫封控数天后。唐宁街新闻办公室当时仍按惯例举行周五酒会，从下午4时开始，数十人聚集在一间屋子里。一名保安试图制止聚会，却遭嘲笑。
+
+                        </p>
+                        <p>
+                            &emsp;&emsp;2021年4月，首相府在英国菲利普亲王葬礼前一天举行聚会，大约45人参加，最后一人直至次日凌晨4时后才离开。其间，花园中供约翰逊年幼儿子玩耍的秋千被参加聚会的人弄坏。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年1月12日，约翰逊承认他曾于2020年违反新冠防疫规定参加酒会，并为此表示道歉。2月11日，英国首相约翰逊的发言人证实，约翰逊收到伦敦警察局的调查问卷。4月中旬，英国警方证实，首相鲍里斯与财政大臣苏纳克在防疫封锁期间聚会违反法律，并因此受到罚款。4月12日，英国首相约翰逊已缴纳违规聚会的罚款并致歉，但他表示不会辞职。4月19日，约翰逊在议会发表声明，为自己违反防疫规定参加首相府聚会事件正式道歉。4月21日，英国议会下院通过工党动议，将对首相鲍里斯·约翰逊是否在“聚会门”事件上误导议会进行调查。该动议当天未经投票表决即获得通过。5月，约翰逊秘密会见“聚会门”事件调查报告作者，讨论报告内容相关事宜。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年5月25日，英国“聚会门”完整报告出炉，曝光首相府和内阁办公室违反防疫禁令组织聚餐且参与者喝到吐等丑态，涉及2020年至2021年的16场聚会；同日，约翰逊在英国议会回应称，对唐宁街十号违反防疫规定“承担全部责任”，同时表示不会因此事辞职。
+                        </p>
+                    </div>
+                    <h2>宣布辞职</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年7月7日，英国现任首相鲍里斯·约翰逊已经同意辞职，但希望能够留任至今年秋天，待英国保守党选出接替者。同日，正式宣布辞去英国保守党党首职务，但仍将留任首相，直到执政党保守党选出新的党首担任新首相。当地时间7月18日晚，鲍里斯·约翰逊政府赢得议会信任投票。鲍里斯·约翰逊将继续担任看守首相直到英国保守党在9月初选出新党首。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年9月6日，即将卸任的英国首相约翰逊在首相府发表告别演讲。
+                        </p>
+                        <p>
+                            &emsp;&emsp;当地时间2022年10月23日，当地媒体报道，英国前首相鲍里斯·约翰逊退出保守党党首竞选。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1.jpeg" width="268px">
+                    <img src="2.png" width="268px" style="margin-top: 250px;">
+                    <img src="3.jpeg" width="268px">
+                </div>
+                <div style="position: absolute;width: 270px;right: 30px;bottom: 18px;">
+                    <img src="4.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>7月8日-安倍晋三遇刺</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;当地时间2022年7月8日11时30分左右，日本前首相安倍晋三在奈良市街头发表演讲时遭枪击倒地，安倍在被紧急送医时心肺功能停止。7月8日当地时间17时03分，安倍晋三因伤势过重不治身亡，终年67岁。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事发时现场传出两声枪响，警方当场以涉嫌杀人未遂逮捕一名男子。该男子名叫山上彻也，41岁，奈良本地人。现场发现一把疑似用于行凶的枪支。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月9日，国家主席习近平就日本前首相安倍晋三逝世向日本首相岸田文雄致唁电。同日，习近平主席和夫人彭丽媛教授向安倍晋三前首相夫人安倍昭惠女士致唁电表示哀悼和慰问。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月10日，美国国务院发言人普莱斯透露，为吊唁遭枪击去世的日本前首相安倍晋三，正在泰国首都曼谷访问的美国务卿布林肯将改变计划、访问日本，与日本政府高官举行会谈。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月12日，日本前首相安倍晋三的葬礼在东京举行。日本首相岸田文雄参加葬礼。当地时间7月22日，日本政府在内阁会议上正式决定，于9月27日在日本武道馆举行日本前首相安倍晋三的国葬。8月25日，安倍遭暗杀调查结果公布：事件“本可避免”。
+                        </p>
+                    </div>
+                    <h2>事件经过</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年7月8日上午11时30分（北京时间10时30分）左右，安倍在奈良市一座地铁站附近街头发表助选演讲，为参议院选举自由民主党候选人拉票，现场大约有30人。演讲开始一两分钟后，一名男子从安倍身后3米处向他开枪，安倍胸部和颈部中弹倒地。随后，安倍被救护车紧急送医，并由医用直升机转运至奈良县立医科大学医院。当地消防部门说，转运时安倍失去意识，处于心肺功能停止状态。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月8日下午5点03分（北京时间下午4点03分），日本前首相安倍晋三在遭到枪击后，因伤势过重不治身亡，终年67岁。
+                        </p>
+                    </div>
+                    <h2>事件影响</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年7月8日，受日本前首相安倍晋三遇袭事件影响，日本自民党指示参议院选举的各候选阵营暂停选举活动。自民党总务会长福田达夫在其个人社交媒体账号上确认了这一消息。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月14日，枪杀前首相安倍晋三的嫌疑人山上彻也的母亲致歉。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年7月20日，据日本广播协会（NHK）报道，日本政府正在协调于9月27日为前首相安倍晋三举行国葬。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年8月9日，据日本共同社报道，日本政府相关人士透露，美国前总统奥巴马将出席9月27日为安倍晋三举行的国葬。 [
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年8月26日，日本内阁官房长官松野博一在记者会上发言：因日本舆论中存在反对为前首相安倍晋三举行“国葬”的声音，日本政府决定不要求行政机构在“安倍国葬”之际为其默哀，也不要求教育委员会等就哀悼安倍提供协助。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年9月8日报道，消息人士透露，山上所在的大阪拘留所收到了来自日本全国各地送给山上的现金共计超过100万日元（约合5万人民币）。报道还称，在请愿网站上，请求为山上减刑的活动还在继续，目前已经有超过7900名网络用户署名。在活动页面上，可以看到“他是被害者”“他的动机令人不禁同情”等评论。
+                        </p>
+                        <p>
+                            &emsp;&emsp;日本朝日电视台2022年12月31日发布独家报道称，枪杀安倍嫌犯山上彻也在受访时表示，“自己做了应该做的事”。报道称，除了上述言论，山上彻也还就他现在的想法称，“在赎罪后想要做一些能够惠及他人的事情”。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="5.png" width="268px">
+                    <img src="6.png" width="268px">
+                    <img src="安 18.jpg" width="268px">
+                    <img src="7.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>

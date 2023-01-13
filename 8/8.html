@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·8</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("台 18.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("1.jpeg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("重.jpg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            border: 1px solid #e5e5e5;
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·8</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">8月2日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">8月19日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>8月2日-南希·佩洛西窜访台湾</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年8月2日，美国国会众议长南希·佩洛西窜访中国台湾地区，中方对此强烈谴责、坚决反对；同时，全球多国政府及国际组织发表声明，表示坚持一个中国原则，反对美方侵害中国主权和领土完整的行径。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年8月2日晚开始，中国人民解放军东部战区陆续在台岛周边开展一系列联合军事行动，在台岛北部、西南、东南海空域进行联合海空演训，将在台湾海峡进行远程火力实弹射击，在台岛东部海域组织常导火力试射。8月4日12时至7日12时，解放军重要军事演训行动进行，并组织实弹射击。8月5日，外交部发言人宣布中方对美国国会众议长佩洛西实施制裁。8月24日，新华社发布《佩洛西窜台的若干事实》。
+                        </p>
+                    </div>
+                    <h2>历史背景</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;世界上只有一个中国，台湾是中国领土不可分割的一部分，中华人民共和国政府是代表全中国的唯一合法政府。1971年联大第2758号决议对此予以明确。1949年中华人民共和国成立以来，181个国家在一个中国原则基础上同中国建立外交关系。一个中国原则是国际社会的普遍共识和国际关系基本准则。
+                        </p>
+                        <p>
+                            &emsp;&emsp;1979年，美方在中美建交公报中明确承诺，“美利坚合众国承认中华人民共和国政府是中国的唯一合法政府。在此范围内，美国人民将同台湾人民保持文化、商务和其他非官方关系。”
+                        </p>
+                    </div>
+                    <h2>窜台事实</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;事实1：一个中国原则是中美关系的政治基础，其含义清晰、明确。世界上只有一个中国，台湾是中国的一部分，中华人民共和国政府是代表全中国的唯一合法政府。这是一个中国的本源本意，也是国际社会的普遍共识。美国口头上称坚持一个中国政策，实际上在不断“切香肠”，歪曲、篡改、虚化、掏空一个中国原则。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实2：国会是美国政府的组成部分，国会议员窜台违背美国仅同台湾保持非官方关系的政治承诺，违反一个中国原则和中美三个联合公报。美国政府有责任确保其对中方作出的政治承诺得到政府各个组成部分的遵守和执行。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实3：佩洛西窜台根本与民主无关，而是侵犯中国主权和领土完整、违背14亿多中国人民意志、挑战国际社会一个中国共识的政治作秀和严重挑衅。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实4：改变台海现状、挑起危机的是美国和“台独”分裂势力。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实5：佩洛西窜台是美国一手策划和挑起的，前因后果一清二楚，是非曲直一目了然。美台勾连挑衅在先，中方正当防卫在后。中方反制举措坚定、有力、适度，符合国内法、国际法和国际惯例。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实6：中国军队在中国台湾岛附近海域开展军事演训活动，合理合法。美国“以台制华”行径才是破坏台海甚至全球和平稳定的祸乱根源。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实7：坚持一个中国原则的国家是绝大多数，包括东盟国家在内的170多个国家表态坚持一个中国原则。在这个问题上，受到孤立的是美国和极少数国家。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实8：台湾问题与乌克兰问题有着本质区别，台湾从来不是一个国家，而是中国的一部分，两者没有任何可比性。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实9：中国针对佩洛西窜访台湾地区采取的制裁措施合理合法，是主权国家应有权利。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实10：佩洛西窜台事件严重损害中美关系的政治基础，为双方交流与合作制造障碍，美方必须承担全部责任。
+                        </p>
+                        <p>
+                            &emsp;&emsp;事实11：中美暂停气候变化商谈，责任在美方。在气候变化等全球环境治理问题上，中方将继续致力于国际合作，言必信、行必果。
+                        </p>
+                    </div>
+                    <h2>反制措施</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年8月3日，国台办发言人马晓光表示，“台独”顽固分子关联机构“台湾民主基金会”、“国际合作发展基金会”打着“民主”和“合作发展”的幌子，在国际上大肆从事“台独”分裂活动，极力拉拢贴靠外部反华势力，攻击抹黑大陆，以金钱等为诱饵拓展台所谓“国际空间”，企图破坏国际社会一个中国格局。大陆方面决定对上述基金会采取惩戒措施，禁止其与大陆组织、企业、个人合作，依法惩治为上述基金会提供资助或服务的组织、企业、个人，以及采取其他必要措施。禁止大陆组织、企业、个人与为上述基金会捐款的宣德能源、凌网科技、天亮医疗、天眼卫星科技等企业进行任何交易、合作，禁止有关企业负责人入境。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年8月3日，国台办发言人马晓光表示，根据有关进出口方面的规定，以及食品安全要求和标准，有关部门即日起对从台湾地区输往大陆的葡萄柚、柠檬、橙等柑橘类水果和冰鲜白带鱼、冻竹荚鱼采取暂停输入措施。同时，决定暂停天然砂对台出口。
+                        </p>
+                        <p>
+                            &emsp;&emsp;针对美国国会众议长佩洛西不顾中方强烈反对和严正交涉，执意窜访中国台湾地区，外交部8月5日宣布采取以下反制措施：一、取消安排中美两军战区领导通话。二、取消中美国防部工作会晤。三、取消中美海上军事安全磋商机制会议。四、暂停中美非法移民遣返合作。五、暂停中美刑事司法协助合作。六、暂停中美打击跨国犯罪合作。七、暂停中美禁毒合作。八、暂停中美气候变化商谈。
+                        </p>
+                        <h3>
+                            <p>
+                                &emsp;&emsp;2022年8月2日，佩洛西专机起飞后，中国人民解放军全程跟踪监控，迫使佩洛西专机舍近求远，绕到菲律宾上空后再回到台湾松山机场。中国人民解放军在多地部署的兵力，对其形成了震慑作用。
+                            </p>
+                            <p>
+                                &emsp;&emsp;2022年8月2日新华社受权公告：中国人民解放军将于北京时间2022年8月4日12时至7日12时，在以下海域和空域，进行重要军事演训行动，并组织实弹射击。
+                            </p>
+                        </h3>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="6.jpeg">
+                                </td>
+                                <td>
+                                    <img src="7.jpeg">
+                                </td>
+                                <td>
+                                    <img src="8.jpeg">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="2.jpeg" width="268px">
+                    <img src="3.jpeg" width="268px">
+                    <img src="4.jpeg" width="268px">
+                </div>
+                <div style="position: absolute;width: 270px;right: 30px;bottom: 18px;">
+                    <img src="5.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>8月19日-重庆江津区森林火灾</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年8月19日重庆江津区森林火灾是发生在重庆市的一起森林火灾事件。
+                        </p>
+                        <p>
+                            &emsp;&emsp;截至8月22日上午7点30分，重庆市江津区支坪镇山火已全面扑灭，无人员伤亡。
+                        </p>
+                    </div>
+                    <h2>事件经过</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;8月19日下午5点多，重庆市江津区支坪镇新房子附近突发森林火灾。当地森林消防队伍立即出动9台车、80名队员，携带灭火装备300余件套，赶赴现场扑救。据了解，当天气温达40℃，火场风力风向为东风2到3级，植被以针阔混交林为主，林下灌木杂草丛生。由于天气温度较高，植被含水量低，大火容易复燃，给火灾的扑救带来困难
+                        </p>
+                        <p>
+                            &emsp;&emsp;经过两天多的扑救，共扑灭火线500米，清理烟点90余处。22日上午9点，经无人机空中勘察，火场全线已无明火，队伍转入清理看守阶段。
+                        </p>
+                    </div>
+                    <h2>事件结果</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年8月，由于持续高温干旱天气，重庆市多地相继突发山火。19日下午5点多，重庆市江津区支坪镇发生森林火灾，森林消防人员立即赶赴现场扑救。
+                        </p>
+                        <p>
+                            &emsp;&emsp;截至8月22日上午7点30分，重庆市江津区支坪镇山火已全面扑灭，无人员伤亡。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="重.jpg" width="268px">
+                    <img src="10.webp" width="268px">
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>
