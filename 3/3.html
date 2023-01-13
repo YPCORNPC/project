@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·3</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("东 18.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("东.jpeg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("4.jpeg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·3</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">3月10日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">3月21日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>3月10日-尹锡悦当选韩国新总统</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;尹锡悦（윤석열/Yoon Seok-Youl），1960年12月18日出生于韩国首尔市（旧译“汉城”），韩国政治家，国民力量党党员，毕业于首尔大学法学院。曾任律师、检察官，现任第20届韩国总统
+                        </p>
+                        <p>
+                            &emsp;&emsp;2003年参与安熙正收受“政治秘密资金”事件的调查；2006年负责调查现代汽车秘密资金事件；2008年参与“BKK证券公司违规操纵股价案件”的调查；2011年主导釜山储蓄银行事件调查；2017年被提拔为首尔中央地方检察厅厅长，他拘捕了朴槿惠、崔顺实和三星电子副会长李在镕等人，后又负责处理“李明博贪腐案”，将李明博送入监狱；2019年6月被提名为韩国检察总长；2020年尹锡悦在对抗文在寅政府的过程中所表现出的强硬形象使他受到广泛关注；2021年3月辞去韩国检察总长职务，6月正式宣布参加韩国总统竞选，7月加入韩国国民力量党。11月5日赢得党内初选，成为国民力量党总统候选人。2022年3月10日，当选第20届总统，并于5月10日起开始总统任期。
+                        </p>
+                    </div>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名 </td>
+                            <td class="tr1">尹锡悦</td>
+                            <td class="tr1">出生地 </td>
+                            <td class="tr1">韩国首尔市</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">外文名 </td>
+                            <td class="tr1">윤석열，Yoon Seok-Youl</td>
+                            <td class="tr1">出生日期 </td>
+                            <td class="tr1">1960年12月18日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">国    籍</td>
+                            <td class="tr1">韩国</td>
+                            <td class="tr1">毕业院校</td>
+                            <td class="tr1">首尔大学</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">党    派</td>
+                            <td class="tr1">国民力量党</td>
+                            <td class="tr1"></td>
+                            <td class="tr1"></td>
+                        </tr>
+                    </table>
+                    <h2>竞选总统</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2021年6月29日，在连续5周成为支持率最高的下任总统热门人选的情况下，尹锡悦正式宣布参加韩国总统竞选，表示将重新树立公正价值，愿把自己的一切奉献给国民和国家。7月30日，尹锡悦加入当时的韩国最大在野党——国民力量党。11月5日，他以47.85%的得票率当选为国民力量党第20届总统候选人。
+                        </p>
+                        <p>
+                            &emsp;&emsp;从2022年1月开始与执政党共同民主党总统候选人李在明举行辩论。1月5日，尹锡悦宣布解散党内竞选团队。2月，尹锡悦表示，如果当选总统，将对文在寅政府进行积弊清算调查。文在寅表示强烈愤怒，要求尹锡悦道歉，尹锡悦没有道歉，但是强调自己并不会进行 “政治报复”，一切按原则办事。3月3日，经过长期协商，尹锡悦和国民之党总统候选人安哲秀宣布合推单一候选人（即尹锡悦），以便实现政权交替，建立一个面向未来的、创新改革的“国民统合政府”。3月9日，韩联社消息，韩国第20届大选最终投票率为77.1%。KBS、MBC、SBS韩国三大电视台公布的联合出口民调显示，尹锡悦在选举中获得48.4%的选票，领先李在明（47.8%）0.6个百分点；大选已正式进入开票阶段。
+                        </p>
+                    </div>
+                    <h2>当选总统</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;截至当地时间2022年3月10日凌晨4时30分，第20届韩国总统大选计票工作已经完成98.94%，最大在野党国民力量党候选人尹锡悦得票率为48.6%，超过执政党共同民主党候选人李在明0.8个百分点，赢得第20届总统大选，当选下届韩国总统。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年3月20日，韩国当选总统尹锡悦宣布，将会把总统办公室迁至国防部大楼。尹锡悦还承诺上任首日对外开放青瓦台。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年3月28日，韩国首尔，韩国总统文在寅与候任总统尹锡悦在青瓦台正式会面，将共进晚餐。这将是文在寅和尹锡悦时隔21个月首次见面。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年4月22日，韩国总统就任筹备委员会表示，候任总统尹锡悦就职典礼将于当地时间5月10日11时在首尔汝矣岛国会广场举行。本次总统就职典礼的预算为33亿韩元(约合人民币1700万元)，刷新了历任记录。
+                        </p>
+                    </div>
+                    <h2>宣誓就职</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年5月10日零时起，作为韩军最高统帅，在位于首尔龙山总统府地下的国家危机管理中心状况室接受联合参谋本部（联参）的电话汇报，开始执行总统职务。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年5月10日凌晨0时起，尹锡悦开始韩国第20届总统任期，作为三军统帅等国家元首，正式拥有法律赋予总统的权限和统治权。当地时间5月10日上午11时，第20届韩国总统就职典礼在位于首尔的国会议事堂举行，尹锡悦正式宣誓就职并发表了演讲。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1.jpeg" width="268px" style="margin-top: 20px;">
+                    <img src="2.png" width="268px" style="margin-top: 20px;">
+                    <img src="3.jpeg" width="268px" style="margin-top: 20px;">
+                    <img src="4.jpeg" width="268px" style="margin-top: 50px;">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>3月21日-东航空难</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年3月21日14时38分许，一架中国东方航空集团有限公司波音737-800客机在广西壮族自治区梧州市藤县埌南镇莫埌村神塘表附近山林坠毁，并引发山火。救援队伍随即集结靠近。MU5735原计划于3月21日13时10分在昆明长水机场起飞，14时52分到达广州白云国际机场。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年3月21日16时，民航局发文已确认该飞机坠毁。机上人员共132人，其中旅客123人、机组9人。民航局已启动应急机制，派出工作组赶赴现场。3月23日16时30分左右，搜寻到两部飞行记录器中的一部驾驶舱话音记录器（CVR）。3月26日晚，“3·21”东航MU5735航空器飞行事故国家应急处置指挥部现场副总指挥、民航局副局长胡振江在发布会上说，“3·21”东航MU5735航班机上123名乘客和9名机组人员已全部遇难。发布会现场，全体起立为机上遇难人员默哀。3月27日，东航集团正式启动理赔工作。3月27日上午9时20分许，第二个黑匣子已找到。3月28日下午，中共中央政治局召开会议，会议开始时，经习近平提议，出席会议的中共中央政治局委员等全体起立，向“3·21”东航MU5735航空器飞行事故遇难同胞默哀。
+                        </p>
+                        <p>
+                            &emsp;&emsp;3月31日，习近平主持中共中央政治局常务委员会会议，听取事故应急处置情况汇报。习近平指示，尽快查明东航飞行事故原因和性质。同日发布“3·21”东航MU5735航空器飞行事故指挥部主要搜救任务已基本完成。4月6日，民航局召开全国民航航空安全电视电话会议，深刻反思“3·21”东航MU5735航空器飞行事故。
+                        </p>
+                    </div>
+                    <h2>东航空难</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">发生时间 </td>
+                            <td class="tr1">2022年3月21日</td>
+                            <td class="tr1">机上人数 </td>
+                            <td class="tr1">132人</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">发生地点 </td>
+                            <td class="tr1">广西壮族自治区梧州市藤县埌南镇莫埌村</td>
+                            <td class="tr1">机组人数 </td>
+                            <td class="tr1">9人</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">客机类型 </td>
+                            <td class="tr1">波音B737-800NG</td>
+                            <td class="tr1">机组人数 </td>
+                            <td class="tr1">9人</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">所属航空</td>
+                            <td class="tr1">中国东方航空</td>
+                            <td class="tr1">注册号 </td>
+                            <td class="tr1">B-1791</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">涉事航班</td>
+                            <td class="tr1">MU5735</td>
+                            <td class="tr1">机    龄 </td>
+                            <td class="tr1">6.8年</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">遇难人数 </td>
+                            <td class="tr1">132人</td>
+                            <td class="tr1"></td>
+                            <td class="tr1"></td>
+                        </tr>
+                    </table>
+                    <h2>空难背景</h2>
+                    <div class="first">
+                        <p>&emsp;&emsp;事故发生4小时前，梧州气象曾发布降温降雨消息：受较强冷空气和切变线共同影响，2022年3月21日夜间至22日，全市有中雨，局部大雨到暴雨，并伴有短时雷暴大风等强对流天气。各地气温降幅达6~8℃，局部10℃以上。23日，全市阴天有小到中雨，局部大雨并伴短时雷暴大风等强对流天气。请注意防范强降雨及强对流天气带来的影响。</p> 
+                    </div>
+                    <h2>空难经过</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年3月21日下午，中国移动员工在莫琅村进行项目验收时听到飞机轰鸣声和爆炸声，查看现场后发现火情，立即拨打了报警电话。
+                        </p>
+                        <p>
+                            &emsp;&emsp;据中国民航局网站消息，2022年3月21日，东航一架波音737客机在执行昆明——广州航班任务时，于梧州上空失联。已确认该飞机坠毁。机上人员共132人，其中旅客123人、机组9人。民航局已启动应急机制，派出工作组赶赴现场。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年3月22日，在国家应急处置指挥部在梧州市举行新闻发布会上，中国民航局航空安全监察专员、航空安全办公室主任朱涛介绍事故发生的基本情况。东航MU5735航班于3月21日13时16分从昆明起飞，14时17分保持巡航高度8900米进入广州管制区。14时20分，管制员发现飞机高度急剧下降，随即多次呼叫机组，但未收到任何回复，14时23分飞机雷达信号消失。后经核实，飞机在梧州市藤县境内坠毁。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年3月22日，总台记者在现场了解到：①MU5735坠机区果园梯田被冲击成平地、水坑，大腿粗的竹子撕裂倒伏，一些树干完全断裂；②救援核心区约半个足球场大，但飞机残骸的抛撒面积非常大，山的另一边甚至也发现飞机残骸，搜寻工作非常艰难。
+                        </p>
+                    </div>
+                    <h2>空难伤亡</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;截至2022年3月26日晚，“3·21”东航MU5735航空器飞行事故国家应急处置指挥部现场副总指挥、民航局副局长胡振江在发布会上说，“3·21”东航MU5735航班机上123名乘客和9名机组人员已全部遇难。发布会现场，全体起立为机上遇难人员默哀。
+                        </p>
+                    </div>
+                </div>
+                <div style="position: absolute;width: 270px;right: 30px;top: 50px;">
+                    <img src="5.jpeg" width="268px">
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·1</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("火 18.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("火1 18.jpg");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("1.jpeg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·1</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">1月3日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">1月15日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>1月3日-象限仪座流星雨</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;象限仪座流星雨，是每年年初都会发生的一个比较大的流星雨。象限仪是一个比较古老的星座，现代星座的划分中则没有这个星座，其位置大致在牧夫座和天龙座之间，赤纬可达50N左右。该流星雨的速度中等，流星亮度较高，分辨象限仪群内的流星并不难，它们的颜色多有些发红。
+                        </p>
+                        <p>
+                            &emsp;&emsp;天文预报显示，2022年象限仪座流星雨极大将出现在北京时间1月4日4时40分。
+                        </p>
+                        <p>
+                            &emsp;&emsp;天文预报显示，象限仪座流星雨2023年极大预计出现在北京时间1月4日11时40分。
+                        </p>
+                    </div>
+                    <h2>象限仪座流星雨</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">外文名 </td>
+                            <td class="tr1">Quadrant meteor shower</td>
+                            <td class="tr1">状    态 </td>
+                            <td class="tr1">已经废弃的星座</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">别    名 </td>
+                            <td class="tr1">“天龙座流星雨“</td>
+                            <td class="tr1">赤    纬 </td>
+                            <td class="tr1">50N左右</td>   
+                        </tr>
+                        <tr>
+                            <td class="tr1">出现时间 </td>
+                            <td class="tr1">1月1日至5日</td>
+                            <td class="tr1">位    置</td>
+                            <td class="tr1">牧夫座和天龙座</td>
+                        </tr>
+                    </table>
+                    <h2>形成原因</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;象限仪座流星雨，是个已经废弃的星座，流星雨原名“天龙座流星雨”，它的辐射点原本位于天龙座，现今已经转移到牧夫座。象限仪流星雨，为传统大流量的流星雨，对于天文学家和天文爱好者来说，都是最陌生的一个，就连它的母体彗星直到现在还是一个迷。一种观点是象限仪流星雨的母体彗星为C/1490 Y1和C/1385 U1，而有的科学家认为它是小行星2003 EH1所带来的。这个流星雨或许是地球经过小行星 2003 EH1 (原来是彗星，疏松物质被太阳吹散后，剩下的彗核变成是小行星) 在轨道上的残留物所形成的 。
+                        </p>
+                    </div>
+                    <h2>名称由来</h2>
+                    <div class="first">                        
+                        <p>
+                            &emsp;&emsp;象限仪座流星雨，是个主要的流星雨，为了避免与十月出现的另外一个主要流星雨“十月天龙座流星雨”混淆，故此采用个废弃了的星座来命名，亦是国际天文联会唯一的一个用不存在星座来命名的流星雨。较旧的中文天文书刊多采用原名，现时仍有部份中文刊物称这个流星雨为“天龙座流星雨”。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="1.jpeg" width="268px" style="margin-top: 20px;">
+                    <img src="2.jpeg" width="268px" style="margin-top: 20px;">
+                    <img src="3.jpeg" width="268px" style="margin-top: 20px;">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>1月15-日汤加火山爆发</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;北京时间2022年1月15日，位于南太平洋岛国汤加王国境内洪阿哈阿帕伊岛海底火山（175.38°W，20.57°S）发生猛烈喷发，多个卫星捕捉到火山喷发的瞬间：海面大面积“炸开”，巨大波纹向外迅速扩散。汤加首都努库阿洛法已观测到海啸，斐济、萨摩亚、新西兰、日本等国均已发布海啸警报。1月18日，汤加副首相波阿西·泰伊宣布国家进入紧急状态，该国通讯依然处于中断状态。1月19日，汤加首相府正式宣布，全国自1月16日至2月13日进入紧急状态。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年1月17日，从中国气象局获悉，中国风云三号D星监测显示，此次可能是30年来规模最大的一次火山爆发，汤加火山喷发将影响拉尼娜状态的发展趋势。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年1月18日，南太平洋岛国汤加火山喷发所致首例死亡已被确认。现年50岁的英国人安吉拉·格洛弗在火山引发的海啸中不幸丧生。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年1月19日，国家主席习近平就汤加火山爆发造成严重灾害向汤加国王图普六世致慰问电。
+                        </p>
+                        <p>
+                            &emsp;&emsp;截至当地时间1月23日20时20分，汤加火山喷发引发海啸已造成6人死亡。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年11月21日，新西兰国家水与大气研究所确认汤加火山喷发规模创100多年来最高纪录。
+                        </p>
+                    </div>
+                    <h2>汤加海底火山喷发</h2>
+                    <div class="first">
+                        <table class="ta2">
+                            <tr>
+                                <td class="tr1">外文名</td>
+                                <td class="tr1">Tonga submarine volcanic eruption</td>
+                                <td class="tr1">发生地点</td>
+                                <td class="tr1">洪阿哈阿帕伊岛火山</td>
+                            </tr>
+                            <tr>
+                                <td class="tr1">发生时间 </td>
+                                <td class="tr1">北京时间 2022年1月15日</td>
+                                <td class="tr1">伤亡情况 </td>
+                                <td class="tr1">6人死亡</td>
+                            </tr>
+                            <tr>
+                                <td class="tr1">地理位置 </td>
+                                <td class="tr1">175.38°W，20.57°S</td>
+                                <td class="tr1"></td>
+                                <td class="tr1"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h2>喷发经过</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年1月14、15日，南太平洋岛国汤加的洪阿哈阿帕伊岛海底火山连续两天剧烈喷发，首都努库阿洛法出现1.2米高的海啸。卫星图像显示，喷发的大片火山灰以及气体像蘑菇云一样，从蓝色的太平洋海域升起。
+                        </p>
+                        <p>
+                            &emsp;&emsp;北京时间1月15日中午12点10分前后，在南太平洋岛国汤加洪阿哈阿帕伊岛附近发生了一次猛烈的普林尼型喷发，大量气体裹挟烟尘形成庞大蘑菇云。据weathermodels网站估算，喷发高度至少25公里。
+                        </p>
+                    </div>
+                    <h2>气候影响</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;据中国气象爱好者分析，此次汤加火山喷发不足以输送影响全球气候的巨量火山灰进入平流层；火山喷发地点在南半球，对北半球的影响相对较小。因此，本次汤加火山喷发，对全球气候的影响，尤其是对北半球的影响，应该要比皮纳图博火山要弱，更比不上坦博拉火山，北半球不太可能出现“无夏之年”。
+                        </p>     
+                        <p>
+                            &emsp;&emsp;专家分析，火山喷发一般会对未来1到2年全球和东亚气候产生持续影响，大概出现0.3℃左右的降温效应。对于我国而言，火山喷发可减弱次年东亚夏季风强度，进而导致我国夏季雨带偏南。因此，建议将火山喷发的持续影响纳入汛期降水预测因子中加以考虑。
+                        </p>
+                        <p>
+                            &emsp;&emsp;
+                        </p>                   
+                    </div>         
+                    <h2>太空影响</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年5月，GOES-17卫星捕捉到了汤加火山于2022年1月15日海底爆发时形成的伞形云团，美国国家航空航天局(NASA)电离层连接探测器(ICON)和欧洲航天局(ESA) Swarm卫星的数据，科学家发现汤加火山爆发后几小时内，在位于太空边缘的电离层(地球带电的上层大气层)形成了以飓风速度行动的风和不寻常的电流。相关成果发表在《地球物理学研究快报》(Geophysical Research Letters)。
+                        </p>
+                    </div>                         
+                </div>
+                <div class="right">
+                    <img src="火 18.jpg" width="268px" style="margin-top: 20px;">
+                    <img src="4.jpeg" width="268px" style="margin-top: 20px;">
+                    <img src="5.png" width="268px" style="margin-top: 20px;">
+                    <img src="6.jpeg" width="268px" style="margin-top: 20px;">
+                </div>
+            </div>
+        </div>
+        
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>

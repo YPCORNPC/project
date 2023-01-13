@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2022·4</title>
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <style>
+        * {
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin-top: 83.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            padding: 0px 100px;
+            z-index: 10;
+            box-shadow: 0 0 5px #888;
+            min-width: 767px;
+        }
+
+        header.sticky {
+            padding: 0px 100px;
+            background: black;
+            transition: 0.6s;
+        }
+
+        header.sticky ul li a {
+            color: white;
+            padding: 10px 16px;
+            transition: 0.8s;
+        }
+
+        header.sticky a {
+            color: white;
+        }
+
+        header .logo {
+            position: relative;
+            font-size: 2.2em;
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700px;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            float: right;
+            margin: 0;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 15px 16px;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #AAAA;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #AAA;
+        }
+
+        header.sticky .dropdown-content {
+            background-color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .shell {
+            width: 900px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        .images {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            transition: .2s;
+        }
+
+        .img {
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img:nth-child(1) {
+            background-image: url("博.jpg");
+        }
+
+        .img:nth-child(2) {
+            background-image: url("b.webp");
+        }
+
+        .img:nth-child(3) {
+            background-image: url("马 18.jpg");
+        }
+
+        .min-images {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            width: 40%;
+            z-index: 999;
+            right: 10%;
+        }
+
+        .min {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -20px 0;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .button-left,
+        .button-right {
+            font-size: 50px;
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 500px;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .button-right:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .button-left:hover {
+            font-size: 80px;
+            transition: 0.2s;
+        }
+
+        .max {
+            border: 1px solid #e5e5e5;
+            width: 1137px;
+            margin: 0 auto;
+            margin-top: 30px;
+            display: flex;
+            box-shadow: #AAAA 0px 6px 10px 5px;
+            border-radius: 8px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .left {
+            width: 790px;
+            padding: 0 0 0 29px;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            position: absolute;
+            padding-top: 29px;
+            width: 270px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .right img:hover{
+            width: 400px;
+            transition: 0.5s;
+        }
+
+        .first {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ta2 {
+            margin-left: 30px;
+            width: 710px;
+        }
+
+        .tr1 {
+            border-bottom: #6c6c6c;
+            border-left: white;
+            border-right: white;
+            border-top: white;
+            border-width: 1px;
+            border-style: dashed;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: -52px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #6C6C6C;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: 0.6s;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <a href="/hm B/index.html" class="logo">2022·4</a>
+        <ul>
+            <li class="dropdown">
+                <a href="#1" class="dropbtn">4月21日</a>
+            </li>
+            <li class="dropdown">
+                <a href="#2" class="dropbtn">4月24日</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="shell">
+                <ui class="images">
+                    <li class="img"></li>
+                    <li class="img"></li>
+                    <li class="img"></li>
+                </ui>
+                <ui class="min-images">
+                    <li class="min"></li>
+                    <li class="min"></li>
+                    <li class="min"></li>
+                </ui>
+                <div class="button">
+                    <div class="button-left">❮</div>
+                    <div class="button-right">❯</div>
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="1" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>4月21日-博鳌亚洲论坛2022年年会召开</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;博鳌亚洲论坛2022年年会是博鳌亚洲论坛在海南博鳌举行的年会。
+                        </p>
+                        <p>
+                            &emsp;&emsp;2022年4月20日，博鳌亚洲论坛2022年年会新闻发布会暨旗舰报告发布会举行；4月21日，国家主席习近平以视频方式发表题为《携手迎接挑战，合作开创未来》的主旨演讲；4月22日，博鳌亚洲论坛2022年年会闭幕新闻发布会举行，博鳌亚洲论坛2022年年会闭幕。
+                        </p>
+                        <p>
+                            &emsp;&emsp;年会以“疫情与世界：共促全球发展，构建共同未来”为主题，话题涉及疫情防控、世界经济、数字经济、国际合作与全球治理等方面，主题反映了国际社会尽早战胜疫情、共促经济发展、维护团结合作、完善全球治理的普遍心声。
+                        </p>
+                    </div>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名 </td>
+                            <td class="tr1">博鳌亚洲论坛2022年年会</td>
+                            <td class="tr1">举办时间 </td>
+                            <td class="tr1">2022年4月21日 至 4月22日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">举办国家 </td>
+                            <td class="tr1">中华人民共和国</td>
+                            <td class="tr1">举办地点 </td>
+                            <td class="tr1">海南省博鳌镇</td>
+                        </tr>
+                    </table>
+                    <h2>会议背景</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;2022年，世界之变、时代之变、历史之变正以前所未有的方式展开，给人类提出了必须严肃对待的挑战。人类还未走出世纪疫情阴霾，又面临新的传统安全风险；全球经济复苏仍脆弱乏力，又叠加发展鸿沟加剧的矛盾；气候变化等治理赤字尚未填补，数字治理等新课题又摆在面前。
+                        </p>
+                        <p>
+                            &emsp;&emsp;“安危不贰其志，险易不革其心。”人类历史表明，越是困难时刻，越要坚定信心。矛盾并不可怕，正是矛盾推动着人类社会进步。任何艰难曲折都不能阻挡历史前进的车轮。过去两年多来，国际社会为应对新冠肺炎疫情挑战、推动世界经济复苏发展作出了艰苦努力。困难和挑战进一步表明，人类是休戚与共的命运共同体，各国要顺应和平、发展、合作、共赢的时代潮流，向着构建人类命运共同体的正确方向，携手迎接挑战、合作开创未来。
+                        </p>
+                    </div>
+                    <h2>会议进程</h2>
+                    <div class="first">
+                        <img src="表.png" width="790px">
+                    </div>
+                    <h2>会议成果</h2>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;博鳌亚洲论坛2022年年会的与会代表对当前大家关心的国际热点问题，世界经济、数字经济、金融、能源、碳中和等重大课题进行了深入认真的探讨、交流。年会取得许多积极成果，深化了合作抗击疫情、共促全球发展的认识；增进了维护共同安全，珍惜和维护亚洲安全、亚洲团结，加强全球治理的共识；发出了促进团结协作，共建共同未来的呼声；并就亚洲和世界的共同发展提出了一系列主张和建议
+                        </p>
+                        <p>
+                            &emsp;&emsp;博鳌亚洲论坛2022年年会期间，在博鳌亚洲论坛2022年年会首场新闻发布会暨旗舰报告发布会上，发布年会旗舰报告《亚洲经济前景及一体化进程2022年度报告》《可持续发展的亚洲与世界2022年度报告——绿色转型亚洲在行动》。 
+                        </p>
+                        <p>
+                            &emsp;&emsp;《博鳌亚洲论坛创新报告2021》。2022年7月13日，博鳌亚洲论坛在广州发布《博鳌亚洲论坛创新报告2021》。论坛李保东秘书长在报告发布会上表示报告的几个重要特点：一是新冠疫情加速全球创新格局的重构；二是亚洲已经成为全球创新活动最活跃的地区之一；三是中国在推动全球创新增长方面扮演了举足轻重的角色；四是科技创新合作成为高质量共建“一带一路”的重要内容；五是科技创新在抗击新冠疫情中继续发挥重要作用。
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="博.jpg" width="268px" style="margin-top: 50px;">
+                    <img src="1.jpeg" width="268px" style="margin-top: 180px;">
+                    <img src="2.jpeg" width="268px">
+                    <img src="3.jpeg" width="268px">
+                    <img src="4.webp" width="268px">
+                    <img src="5.webp" width="268px">
+                </div>
+            </div>
+        </div>
+        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+            <div class="max">
+                <div id="2" style="position: absolute;top: -53.5px;"></div>
+                <div class="left">
+                    <h1>4月24日-马克龙连任</h1>
+                    <div class="first">
+                        <p>
+                            &emsp;&emsp;埃马纽埃尔·马克龙（Emmanuel Macron），全名是埃马纽埃尔·让-米歇尔·弗雷德里克·马克龙（Emmanuel Jean-Michel Frédéric Macron），1977年12月21日出生于法国索姆省亚眠，法国政治家，法兰西第五共和国第八任总统兼安道尔大公。
+                        </p>
+                        <p>
+                            &emsp;&emsp;1993年，埃马纽埃尔·马克龙到亚眠市拉普罗维登斯耶稣会学校读书。2001年，马克龙加入法国社会党。2004年，马克龙在法国国家行政学院高级公务员服务培训毕业后，获得了巴黎政治学院的公共事务学位。2004年，马克龙到法国经济部任职。2008年，马克龙花费5.4万欧元“赎金”辞去高级公务员职位，投身罗斯柴尔德家族。2012年，随弗朗索瓦·奥朗德胜选进入爱丽舍宫并被任命为总统府副秘书长。2014年，马克龙被时任法国总理曼努埃尔·瓦尔斯任命为经济部长。2017年5月14日，马克龙正式就任法国总统。2022年4月27日，马克龙在法国总统选举中获得连任。
+                        </p>
+                        <p>
+                            &emsp;&emsp;埃马纽埃尔·马克龙在对外政策上，支持“全球化”，反对保护法国的一些中低端工作职位，主张应该顺应经济的发展规律；经济观点较为开放，其担任法国经济部长期间力挺中国收购法国图卢兹机场的交易，批评那些反对交易的当地代表和政治人物；在就业上让法国失业率降至15年来的最低水平，在疫情前降低了财政赤字；加强了法国军力；同时，法国减少了对化石燃料的依赖；农业现代化进程继续展开。
+                        </p>
+                    </div>
+                    <h2>埃马纽埃尔·马克龙</h2>
+                    <table class="ta2">
+                        <tr>
+                            <td class="tr1">中文名 </td>
+                            <td class="tr1">埃马纽埃尔·马克龙</td>
+                            <td class="tr1">籍    贯  </td>
+                            <td class="tr1">法国亚眠</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">外文名 </td>
+                            <td class="tr1">Emmanuel Macron</td>
+                            <td class="tr1">出生日期 </td>
+                            <td class="tr1">1977年12月21日</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">国    籍</td>
+                            <td class="tr1">法国</td>
+                            <td class="tr1">毕业院校</td>
+                            <td class="tr1">巴黎第十大学、巴黎政治学院</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">民    族 </td>
+                            <td class="tr1">法兰西人</td>
+                            <td class="tr1">政    党</td>
+                            <td class="tr1">复兴党</td>
+                        </tr>
+                        <tr>
+                            <td class="tr1">职    业 </td>
+                            <td class="tr1">政治家</td>
+                            <td class="tr1">主要成就</td>
+                            <td class="tr1"> 法兰西第五共和国第八任总统兼安道尔大公</td>
+                        </tr>
+                    </table>
+                    <h2>连任总统</h2>
+                    <div class="first">
+                        &emsp;&emsp;2022年3月3日（法国巴黎时间），埃马纽埃尔·马克龙正式宣布竞选连任；3月17日（法国巴黎时间），埃马纽埃尔·马克龙公布竞选连任纲领，集中阐述了应对政治经济问题以及法国社会挑战的相关计划；4月2日（法国巴黎时间），埃马纽埃尔·马克龙在巴黎举行竞选集会；4月16日，埃马纽埃尔·马克龙在马赛举行2022法国总统大选竞选集会；4月27日（法国巴黎时间），埃马纽埃尔·马克龙在法国总统选举第二轮投票中获得多数选票，获得连任；5月5日（法国巴黎时间），埃马纽埃尔·马克龙所在的共和国前进党宣布，将更名为“复兴党”参加6月的法国议会选举；5月7日，法国总统就职仪式在巴黎总统府爱丽舍宫举行，埃马纽埃尔·马克龙在就职典礼上致辞。 
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="6.jpeg" width="268px">
+                    <img src="7.webp" width="268px" style="margin-top: 300px;">                    
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">顶部</button>
+
+        <script>
+            let mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </main>
+    <footer
+        style="margin: 0 auto;margin-top: 20px; width: 100%;padding: 5px;border: 2px solid #e5e5e5;width: 1137px;border-radius: 8px;">
+        <h5 style="text-align: center;padding: 0;margin: 15px;">
+            <p>
+                <strong>点击左上角数字可回到主页&emsp;&emsp;点击右侧灰色方块可回到顶部</strong>
+            </p>
+            <p>
+                软工2211 0223638 晏鹏程
+            </p>
+        </h5>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <script>
+        let left = document.querySelector(".button-left")
+        let right = document.querySelector(".button-right")
+        let min = document.querySelectorAll(".min")
+        let images = document.querySelector(".images")
+        let index = 0
+        let time
+        function position() {
+            images.style.left = (index * -100) + "%"
+        }
+        function add() {
+            if (index >= min.length - 1) {
+                index = 0
+            } else {
+                index++
+            }
+        }
+        function desc() {
+            if (index < 1) {
+                index = min.length - 1
+            } else {
+                index--
+            }
+        }
+        function timer() {
+            time = setInterval(() => {
+                index++
+                desc()
+                add()
+                position()
+            }, 3000)
+        }
+        left.addEventListener("click", () => {
+            desc()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        right.addEventListener("click", () => {
+            add()
+            position()
+            clearInterval(time)
+            timer()
+        })
+        for (let i = 0; i < min.length; i++) {
+            min[i].addEventListener("click", () => {
+                index = i
+                position()
+                clearInterval(time)
+                timer()
+            })
+        }
+        timer()
+    </script>
+    <script type="text/javascript" src="wow.min.js"></script>
+    <script type="text/javascript">new WOW().init() </script>
+</body>
+
+</html>
